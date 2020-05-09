@@ -59,5 +59,36 @@
     cd /tmp
   
     ls
+   
+  <h3> Working with Volume</h3>
+  
+  Create Volume:
+  
+  Syntax : docker volume create {volume name}
+  
+  Example:
     
+    docker volume create svolume
+ 
+ Inspect Volume:
+  
+  Syntax : docker volume inspect {volume name}  or docker volume ls
+  
+  Example:
+    
+    docker volume inspect svolume
+    
+    docker volume ls
+    
+ Remove Volume:
+  
+  Syntax :  docker volume rm {volume name}  or
+            docker system prune
+            docker volume prune
+  
+  Example:
+    
+    docker volume rm svolume
+    
+    docker volume ls
     
