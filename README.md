@@ -91,4 +91,25 @@
     docker volume rm svolume
     
     docker volume ls
+   
+ 
+ <h3>Volume usecase with Jenkins</h3>
+ 
+ a) Pull Jenkins Image
+  
+    docker pull jenkins
+
+  b) Run Jenkins with already created image (Refer above volume create step)
     
+    docker run --name sashjen -v sashvol:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins
+
+  Note: You may use the volume (example : svolume) at any number of this jenkins image, all the jenkins data will persist outside of container
+  
+  <h3> Volumes in local drive <h3>
+
+    mkdir jenkins_docker_home
+    sudo chown 1000 jenkins_docker_home
+
+    docker run --name sashjen1 -v /home/ec2-user/environment/jenkins_docker_home:/var/jenkins_home -p 8081:8080 -p 50001:50000 jenkins
+
+Note: You may see the files in the local volume directory (example :jenkins_docker_home)
