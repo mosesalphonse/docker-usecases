@@ -15,4 +15,49 @@
     Run the below command (make sure it returns the docker details)
       
       <i>docker info</i>
+      
+ 
+  <h3> Adding files(non-jars) into docker images</h3>
+ 
+ a) verify .dockerignore and add the file format(here try to add .json file into docker image) :
   
+    !tmp/one.csv
+
+  Note: When you do the docker build, the above files moved into docker image under /tmp/ folder
+  
+  b) In Docker file add te below
+
+    COPY {file name} /tmp/
+
+     example :
+
+      COPY tmp/one.csv /tmp/
+ 
+
+  <h3> Copy files into docker running container</h3>
+  
+  a) Copy files
+  
+  <b> syntax:</b> 
+  
+    docker cp {Filename} {container ID}:/tmp
+
+      example :
+
+      docker cp one.csv b07ac8872087:/tmp
+      
+   b) login into docker container
+   
+   docker exec -it {container ID} /bin/bash
+
+   example :
+   
+    docker exec -it b07ac8872087 /bin/bash
+    
+   c) verify the file inside docker container:
+    
+    cd /tmp
+  
+    ls
+    
+    
